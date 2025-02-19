@@ -5,7 +5,7 @@ import {
   isDone,
   mapToolListToOpenAiTools,
 } from "./openai-utils.ts";
-import { OPENAI_API_KEY, OPENAI_MODEL } from "./env.ts";
+import { OPENAI_API_KEY, OPENAI_MODEL, OPENAI_BASE_URL } from "./env.ts";
 import { MessageHandler, type MessageType } from "./messages.ts";
 import { performNextStepSystemPrompt } from "./prompts.ts";
 import { askForInput } from "./cli.ts";
@@ -46,6 +46,7 @@ const main = async () => {
   const messagesHandler = new MessageHandler();
 
   const openai = new OpenAI({
+    baseURL: OPENAI_BASE_URL,
     apiKey: OPENAI_API_KEY,
   });
 

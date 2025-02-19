@@ -1,6 +1,7 @@
 // TODO: Move to .env file
 
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
+const OPENAI_BASE_URL = Deno.env.get("OPENAI_BASE_URL")!;
 const MCP_SERVER_COMMAND = Deno.env.get("MCP_SERVER_COMMAND")!;
 const MCP_SERVER_ARGS = JSON.parse(Deno.env.get("MCP_SERVER_ARGS") || "[]")!;
 const DEBUG = Deno.env.get("DEBUG") === "true";
@@ -8,6 +9,10 @@ const OPENAI_MODEL = Deno.env.get("OPENAI_MODEL") || "gpt-4o-mini";
 
 if (!OPENAI_API_KEY) {
   throw new Error("OPENAI_API_KEY is not set");
+}
+
+if (!OPENAI_BASE_URL) {
+  throw new Error("OPENAI_BASE_URL is not set");
 }
 
 if (!MCP_SERVER_COMMAND) {
@@ -24,4 +29,5 @@ export {
   MCP_SERVER_ARGS,
   DEBUG,
   OPENAI_MODEL,
+  OPENAI_BASE_URL,
 };
